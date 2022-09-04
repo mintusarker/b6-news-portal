@@ -41,6 +41,14 @@ const cardProducts = async(newsId) =>{
 }
 
 // news section-----
+
+
+const newsSort = (newsAll) =>{
+  newsAll.sort(function(a,b){
+    return b.total_view - a.total_view;
+  })
+};
+
 const displayNews = newses => {
   const newsContainer = document.getElementById('news-container');
   newsContainer.innerText = '';
@@ -117,15 +125,6 @@ const spinner = (isLoading) => {
     displaySpinner.classList.add('d-none');
   }
 };
-
-// sort section----->
-
-const showNews = (newsAll) =>{
-    newsAll.sort(function(a,b){
-      return b.total_view - a.total_view;
-    });
-  }
-
   
 const arrey = [];
 document.getElementById('show-number').addEventListener('click' ,function(){
@@ -137,5 +136,6 @@ document.getElementById('show-number').addEventListener('click' ,function(){
 
 // spinner();
 // loadNewsDetails();
-showNews()
+// newsSort()
 // loadProducts();
+// cardProducts(01)
