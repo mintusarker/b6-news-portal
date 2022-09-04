@@ -41,9 +41,7 @@ const cardProducts = async(newsId) =>{
 }
 
 // news section-----
-
 const displayNews = newses => {
-  
   const newsContainer = document.getElementById('news-container');
   newsContainer.innerText = '';
   newses.forEach(news =>{
@@ -79,69 +77,9 @@ const displayNews = newses => {
     
   });
   spinner(false);
-}
+  }
+
 cardProducts();
-
-
-
-// // sort section------>
-
-// const showNewss = (newsAll) =>{
-//   newsAll.sort(function(a,b){
-//     return b.total_view - a.total_view;
-//   });
-// const newsContainer = document.getElementById('news-container');
-//  newsContainer.textContent = '';
-//  const notFound = document.getElementById('not-found');
-//  const found = document.getElementById('found');
-//  found.textContent = "";
-//  if(newsAll.length === 0){
-//   notFound.classList.remove('d-none');
-//   found.classList.add('d-none');
-//  }
-//  else{
-//   notFound.classList.add('d-none');
-//   found.classList.remove('d-none');
-//   console.log(newsAll.length);
-//   const p = document.createElement('p');
-//   p.classList.add('fw-bold');
-//   p.innerText = `
-//   ${newsAll.length} news are found`;
-//   found.appendChild(p);
-//  }
-//  newsAll.forEach((news) => {
-//   const newsDiv = document.createElement('div');
-//   newsDiv.innerHTML = `
-//   <div class="card mb-3">
-//       <div class="row g-0">
-//         <div class="col-md-4">
-//           <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
-//        </div>
-//         <div class="col-md-8">
-//           <div class="card-body">
-//            <h5 class="card-title">${news.title}</h5>
-//             <p class="card-text custom">${news.details}</p>
-
-//           <div class="d-flex justify-content-around">
-//            <div class="d-flex gap-2">
-//            <img style="width:100px; hight:100px" class="rounded-circle" src="${news.author.img}">
-//            <h5 class="mt-4">${news.author.name}</h5>
-//            </div>
-
-//             <div class="mt-4">
-//             <p class="d-flex gap-2"><i class="mt-1 fa-solid fa-eye">${news.total_view}</i></p>
-//             </div>
-//             <div class="mt-4">
-//             <div onclick="loadNewsDetails('${news._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">More</div> 
-//         </div>
-//      </div>
-//    </div>
-  
-//   `;
-//   newsContainer.appendChild(newsDiv);
-//  });
-//  spinner(false);
-// };
 
 // modal details----->
 
@@ -187,6 +125,15 @@ const showNews = (newsAll) =>{
       return b.total_view - a.total_view;
     });
   }
+
+  
+const arrey = [];
+document.getElementById('show-number').addEventListener('click' ,function(){
+ if(displayNews === 'true'){
+  arrey.push(displayNews)
+ }
+})
+
 
 // spinner();
 // loadNewsDetails();
