@@ -14,22 +14,23 @@ const setDisplay = news =>{
     div.innerHTML = `
     <p onclick="cardProducts('${data.category_id}')" class="btn btn-light my-4">${data.category_name}</p>
     
-    `
-    
+    `;
     menuContainer.appendChild(div);
   });
 }
 loadProducts();
 
-
 const cardProducts = async(newsId) =>{
+    spinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${newsId}`;
     const res = await fetch(url);
     const data = await res.json();
     displayNews(data.data);
+    
 }
 
 const displayNews = newses => {
+  
   const newsContainer = document.getElementById('news-container');
   newsContainer.innerText = '';
   newses.forEach(news =>{
@@ -62,8 +63,10 @@ const displayNews = newses => {
    </div>
     `;
     newsContainer.appendChild(newsDiv);
-  })
-;}
+    
+  });
+  spinner(false);
+}
 cardProducts()
 
 
@@ -97,7 +100,7 @@ cardProducts()
 //   .then(res => res.json())
 //   .then(data => showNews(data.data))
 //   // .catch((error) => console.log(error));
-//   //  spinner(true)
+//    spinner(true)
 // }
 
 // const showNews = (newsAll) =>{
@@ -161,7 +164,7 @@ const loadNewsDetails = (id) => {
   fetch(`https://openapi.programming-hero.com/api/news/${id}`)
   .then((res) =>res.json())
   .then((data) => displayNewDetails(data.data[0]))
-  // .catch((error) => console.log(error));
+  .catch((error) => console.log(error));
 };
 
 const displayNewDetails = (data) => {
@@ -182,17 +185,17 @@ const displayNewDetails = (data) => {
 
 
 
-// // const spinner = (isLoading) => {
-// //   const displaySpinner = document.getElementById('spiner-spiner');
-// //   if(isLoading) {
-// //     displaySpinner.classList.remove('d-none');
-// //   }
-// //   else{
-// //     displaySpinner.classList.add('d-none');
-// //   }
-// // };
+const spinner = (isLoading) => {
+  const displaySpinner = document.getElementById('spiner');
+  if(isLoading) {
+    displaySpinner.classList.remove('d-none');
+  }
+  else{
+    displaySpinner.classList.add('d-none');
+  }
+};
 
-// // spinner();
+spinner();
 loadNewsDetails();
 // // loadNews();
 // // showNews()
