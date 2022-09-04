@@ -104,9 +104,9 @@ cardProducts()
 // }
 
 // const showNews = (newsAll) =>{
-//   // newsAll.sort(function(a,b){
-//   //   return b.total_view - a.total_view;
-//   // });
+//   newsAll.sort(function(a,b){
+//     return b.total_view - a.total_view;
+//   });
 // const newsContainer = document.getElementById('news-container');
 //  newsContainer.textContent = '';
 // //  const notFound = document.getElementById('not-found');
@@ -198,5 +198,5 @@ const spinner = (isLoading) => {
 spinner();
 loadNewsDetails();
 // // loadNews();
-// // showNews()
+// showNews()
 // loadProducts();
