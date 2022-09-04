@@ -27,7 +27,7 @@ const cardProducts = async(newsId) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${newsId}`;
     const res = await fetch(url);
     const data = await res.json();
-    try{
+    try {
         const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
        const data = await res.json();
        console.log(data);
@@ -125,13 +125,8 @@ const spinner = (isLoading) => {
     displaySpinner.classList.add('d-none');
   }
 };
-  
-const arrey = [];
-document.getElementById('show-number').addEventListener('click' ,function(){
- if(displayNews === 'true'){
-  arrey.push(displayNews)
- }
-})
+
+
 
 
 // spinner();
