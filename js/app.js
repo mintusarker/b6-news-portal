@@ -1,24 +1,4 @@
-
-// const loadProducts = async() =>{
-//     const url = `https://openapi.programming-hero.com/api/news/categories`;
-//     const res = await fetch(url);
-//     const data = await res.json();
-//     setDisplay(data.data.news_category);
-
-//     try{
-//       const res = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
-//       const data = await res.json();
-//       console.log(data);
-//     }
-//     catch{
-//       console.log('There was an error!!')
-
-//     }
-
-// };
-
-
-
+// category section----
 const loadProducts = () =>{
     fetch(`https://openapi.programming-hero.com/api/news/categories`)
     .then(res => res.json())
@@ -47,18 +27,20 @@ const cardProducts = async(newsId) =>{
     const url = `https://openapi.programming-hero.com/api/news/category/${newsId}`;
     const res = await fetch(url);
     const data = await res.json();
-    // try{
-    //     const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
-    //    const data = await res.json();
-    //    console.log(data);
-    //       }
-    //       catch{
-    //         console.log('There was an error!!')
+    try{
+        const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
+       const data = await res.json();
+       console.log(data);
+          }
+          catch{
+            console.log('There was an error!!')
       
-    //       }
+          }
     displayNews(data.data);
     
 }
+
+// news section-----
 
 const displayNews = newses => {
   
@@ -102,95 +84,66 @@ cardProducts();
 
 
 
-// const loadProducts = () =>{
-//     fetch(`https://openapi.programming-hero.com/api/news/categories`)
-//     .then(res => res.json())
-//     .then(data => setDisplay(data.data.news_category))
-//     // .catch(error => {
-//     //   console.log('there was an error');
-//     // })
+// // sort section------>
+
+// const showNewss = (newsAll) =>{
+//   newsAll.sort(function(a,b){
+//     return b.total_view - a.total_view;
+//   });
+// const newsContainer = document.getElementById('news-container');
+//  newsContainer.textContent = '';
+//  const notFound = document.getElementById('not-found');
+//  const found = document.getElementById('found');
+//  found.textContent = "";
+//  if(newsAll.length === 0){
+//   notFound.classList.remove('d-none');
+//   found.classList.add('d-none');
+//  }
+//  else{
+//   notFound.classList.add('d-none');
+//   found.classList.remove('d-none');
+//   console.log(newsAll.length);
+//   const p = document.createElement('p');
+//   p.classList.add('fw-bold');
+//   p.innerText = `
+//   ${newsAll.length} news are found`;
+//   found.appendChild(p);
+//  }
+//  newsAll.forEach((news) => {
+//   const newsDiv = document.createElement('div');
+//   newsDiv.innerHTML = `
+//   <div class="card mb-3">
+//       <div class="row g-0">
+//         <div class="col-md-4">
+//           <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
+//        </div>
+//         <div class="col-md-8">
+//           <div class="card-body">
+//            <h5 class="card-title">${news.title}</h5>
+//             <p class="card-text custom">${news.details}</p>
+
+//           <div class="d-flex justify-content-around">
+//            <div class="d-flex gap-2">
+//            <img style="width:100px; hight:100px" class="rounded-circle" src="${news.author.img}">
+//            <h5 class="mt-4">${news.author.name}</h5>
+//            </div>
+
+//             <div class="mt-4">
+//             <p class="d-flex gap-2"><i class="mt-1 fa-solid fa-eye">${news.total_view}</i></p>
+//             </div>
+//             <div class="mt-4">
+//             <div onclick="loadNewsDetails('${news._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">More</div> 
+//         </div>
+//      </div>
+//    </div>
+  
+//   `;
+//   newsContainer.appendChild(newsDiv);
+//  });
+//  spinner(false);
 // };
 
-//  const setDisplay = news =>{
-//    const menuContainer = document.getElementById('catagories');
-//    news.forEach(data =>{
-//     const div = document.createElement('div');
-//     //  div.classList.add('d-flex','justify-content-between');
-//     div.innerHTML = `
-//    <p onclick="showNews(${data.category_id})" class="btn">${data.category_name}</p>
-//     `
-    
-//     menuContainer.appendChild(div);
-//   });
-//  }
-
-// // const spinner = document.getElementById('spiner-spiner');
-// const loadNews =(newsId) => {
-//   const url = `https://openapi.programming-hero.com/api/news/category/${newsId}`
-//   fetch(url)
-//   .then(res => res.json())
-//   .then(data => showNews(data.data))
-//   // .catch((error) => console.log(error));
-//    spinner(true)
-// }
-
-const showNewss = (newsAll) =>{
-  newsAll.sort(function(a,b){
-    return b.total_view - a.total_view;
-  });
-const newsContainer = document.getElementById('news-container');
- newsContainer.textContent = '';
- const notFound = document.getElementById('not-found');
- const found = document.getElementById('found');
- found.textContent = "";
- if(newsAll.length === 0){
-  notFound.classList.remove('d-none');
-  found.classList.add('d-none');
- }
- else{
-  notFound.classList.add('d-none');
-  found.classList.remove('d-none');
-  console.log(newsAll.length);
-  const p = document.createElement('p');
-  p.classList.add('fw-bold');
-  p.innerText = `
-  ${newsAll.length} news are found`;
-  found.appendChild(p);
- }
- newsAll.forEach((news) => {
-  const newsDiv = document.createElement('div');
-  newsDiv.innerHTML = `
-  <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
-       </div>
-        <div class="col-md-8">
-          <div class="card-body">
-           <h5 class="card-title">${news.title}</h5>
-            <p class="card-text custom">${news.details}</p>
-
-          <div class="d-flex justify-content-around">
-           <div class="d-flex gap-2">
-           <img style="width:100px; hight:100px" class="rounded-circle" src="${news.author.img}">
-           <h5 class="mt-4">${news.author.name}</h5>
-           </div>
-
-            <div class="mt-4">
-            <p class="d-flex gap-2"><i class="mt-1 fa-solid fa-eye">${news.total_view}</i></p>
-            </div>
-            <div class="mt-4">
-            <div onclick="loadNewsDetails('${news._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">More</div> 
-        </div>
-     </div>
-   </div>
-  
-  `;
-  newsContainer.appendChild(newsDiv);
- });
-//  spinner(false);
-};
-
+// modal details----->
 
 const loadNewsDetails = (id) => {
   fetch(`https://openapi.programming-hero.com/api/news/${id}`)
@@ -215,7 +168,7 @@ const displayNewDetails = (data) => {
   modalFooter.innerText = data.details.slice(0, 150);
 };
 
-
+// spinner section------>
 
 const spinner = (isLoading) => {
   const displaySpinner = document.getElementById('spiner');
@@ -227,14 +180,15 @@ const spinner = (isLoading) => {
   }
 };
 
+// sort section----->
 
 const showNews = (newsAll) =>{
     newsAll.sort(function(a,b){
       return b.total_view - a.total_view;
     });
   }
-spinner();
-loadNewsDetails();
-// // loadNews();
+
+// spinner();
+// loadNewsDetails();
 showNews()
 // loadProducts();
